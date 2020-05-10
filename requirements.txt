@@ -13,4 +13,4 @@ django-heroku
 django-tinymce
 reportlab
 django-social-share
-django-quran
+# django-quran
