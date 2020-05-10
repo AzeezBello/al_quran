@@ -1,0 +1,1 @@
+web: gunicorn al_quran.wsgi --log-file -
