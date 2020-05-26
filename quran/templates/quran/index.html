@@ -1,5 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block content %}
+
+
+{% block nav %} {% include 'nav.html' %} {% endblock nav %}
+<div class="header p-5">
+    <div class="pt-5 pb-5 text-center">
+      <img src="{% static '/img/arabic.png' %}" alt="logo" class="img-fluid">
+      <h2 class="pt-5">THE NOBLE QUR'AN</h2>
+    </div>
+</div>
+
 <ol>
     {% for sura in suras %}
-    <li><a href="{{ sura.get_absolute_url }}">{{ sura.name }}</a></li>
+    <li>
+        <a href="{% url 'quran_sura' sura.pk%}">
+            <span class="pr-5">{{ sura.tname}}</span> <span class="pl-5">{{ sura.name }}</span> </br>
+            <small>{{ sura.ename }}</small>
+        </a>
+    </li>
     {% endfor %}
 </ol>
+
+    {% block footer %} {% include 'footer.html' %} {% endblock footer %}
+
+{% endblock %}
