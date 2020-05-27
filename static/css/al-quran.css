@@ -3,3 +3,16 @@
  background-color: #333748;
  color: white;
 }
+
+footer{
+    background: #333748;
+    color: #FFFFFF;
+}
+
+footer a{
+    color: #929595
+}
+footer .footer-copyright{
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+}

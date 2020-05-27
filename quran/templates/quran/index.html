@@ -3,8 +3,6 @@
 {% block title %} Home {% endblock %}
 {% block content %}
 
-
-{% block nav %} {% include 'nav.html' %} {% endblock nav %}
 <div class="header p-5">
     <div class="pt-5 pb-5 text-center">
       <img src="{% static '/img/arabic.png' %}" alt="logo" class="img-fluid">
@@ -23,6 +21,5 @@
     {% endfor %}
 </ol>
 
-    {% block footer %} {% include 'footer.html' %} {% endblock footer %}
 
 {% endblock %}

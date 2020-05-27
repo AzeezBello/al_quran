@@ -1,8 +1,18 @@
-<ol>
-    {% for aya,translation in ayas %}
-    <li id="aya-{{ sura.number }}-{{ aya.number }}" class="quran aya">
-        <p class="aya">{{ aya.text }}</p>
-        <p class="translation">{{ translation.text }}</p>
-    </li>
-    {% endfor %}
-</ol>
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Sura {% endblock %}
+{% block content %}
+
+
+    <ol style="list-style: none">
+        {% for aya,translation in ayas %}
+        <li id="aya-{{ sura.number }}-{{ aya.number }}" class="quran aya">
+            {{ sura.number }}:{{ aya.number }}
+            <p class="aya">{{ aya.text }}</p>
+            <p class="translation">{{ translation.text }}</p>
+        </li>
+        {% endfor %}
+    </ol>
+
+
+{% endblock %}
