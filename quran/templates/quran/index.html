@@ -9,19 +9,19 @@
       <h2 class="pt-5">THE HOLY QUR'AN</h2>
     </div>
 </div>
-<div class="row">
-    <!-- Grid column -->
-    {% for sura in suras %}
-    <div class="col-md-3 mx-auto">
-        {{sura.number}}
-        <a href="{% url 'quran_sura' sura.pk%}">
-            <span class="pr-5">{{ sura.tname}}</span> <span class="pl-5">{{ sura.name }}</span> </br>
-            <small class="pl-3">{{ sura.ename }}</small>
-
-        </a>
-
+<div class="container">
+    <div class="row">
+        <!-- Grid column -->
+        {% for sura in suras %}
+        <div class="col-md-4 mx-auto">
+            {{sura.number}}
+            <a href="{% url 'quran_sura' sura.pk%}">
+                <span class="pr-5">{{ sura.tname}}</span> <span class="pl-5">{{ sura.name }}</span> </br>
+                <small class="pl-3">{{ sura.ename }}</small>
+            </a>
+        </div>
+         {% endfor %}
     </div>
-     {% endfor %}
 </div>
 
 
