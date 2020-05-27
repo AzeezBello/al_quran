@@ -6,20 +6,23 @@
 <div class="header p-5">
     <div class="pt-5 pb-5 text-center">
       <img src="{% static '/img/arabic.png' %}" alt="logo" class="img-fluid">
-      <h2 class="pt-5">THE NOBLE QUR'AN</h2>
+      <h2 class="pt-5">THE HOLY QUR'AN</h2>
     </div>
 </div>
-
-<ol>
+<div class="row">
+    <!-- Grid column -->
     {% for sura in suras %}
-    <li>
+    <div class="col-md-3 mx-auto">
+        {{sura.number}}
         <a href="{% url 'quran_sura' sura.pk%}">
             <span class="pr-5">{{ sura.tname}}</span> <span class="pl-5">{{ sura.name }}</span> </br>
-            <small>{{ sura.ename }}</small>
+            <small class="pl-3">{{ sura.ename }}</small>
+
         </a>
-    </li>
-    {% endfor %}
-</ol>
+
+    </div>
+     {% endfor %}
+</div>
 
 
 {% endblock %}
