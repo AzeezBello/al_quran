@@ -16,8 +16,8 @@
         <div class="col-md-4 pb-3 mx-auto">
             {{sura.number}}
             <a href="{% url 'quran_sura' sura.pk%}">
-                <span class="pr-5">{{ sura.tname}}</span> <span class="pl-5">{{ sura.name }}</span> </br>
-                <small class="pl-3">{{ sura.ename }}</small>
+                <span>{{ sura.tname}}</span> <span class="float-right">{{ sura.name }}</span> </br>
+                &emsp;<small>{{ sura.ename }}</small>
             </a>
         </div>
          {% endfor %}
