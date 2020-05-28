@@ -13,10 +13,10 @@
     <div class="row">
         <!-- Grid column -->
         {% for sura in suras %}
-        <div class="col-md-4 pb-3 mx-auto">
+        <div class="col-md-4 pb-5 pr-5 pl-5">
             {{sura.number}}
             <a href="{% url 'quran_sura' sura.pk%}">
-                <span>{{ sura.tname}}</span> <span class="float-right">{{ sura.name }}</span> </br>
+                <span>{{ sura.tname}}</span> <h4 class="float-right">{{ sura.name }}</h4> </br>
                 &emsp;<small>{{ sura.ename }}</small>
             </a>
         </div>
