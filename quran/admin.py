@@ -4,11 +4,13 @@ from .models import *
 
 # Register your models here.
 class SuraAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ['number', 'tname', 'ename']
+    list_display = ['number', 'tname', 'ename', 'name', 'type', 'order', 'rukus',]
 
 
 class AyaAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ['sura', 'number', 'text', ]
+    list_display = ['sura', 'number', 'text', ]
 
 
 class QuranTranslationAdmin(admin.ModelAdmin):
