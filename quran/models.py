@@ -54,6 +54,9 @@ class QuranTranslation(models.Model):
     source_name = models.CharField(blank=False, max_length=50)
     source_url = models.URLField(blank=False)
 
+    def __str__(self):
+        return self.name
+
     def __unicode__(self):
         return self.name
 
@@ -74,6 +77,7 @@ class TranslatedAya(models.Model):
 
     def __str__(self):
         return self.text
+
 
 class Root(models.Model):
     """Root word"""
