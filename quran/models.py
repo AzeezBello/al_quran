@@ -25,14 +25,11 @@ class Sura(models.Model):
     class Meta:
         ordering = ['number']
 
-    def get_absolute_url(self):
-        return 'quran_sura', [str(self.number)]
-
     def __str__(self):
         return self.tname
 
     def __unicode__(self):
-        return self.name
+        return self.tname
 
 
 class Aya(models.Model):
@@ -46,11 +43,6 @@ class Aya(models.Model):
         unique_together = ('number', 'sura')
         ordering = ['sura', 'number']
 
-    def end_marker(self):
-        return mark_safe('&#64831;&#1633;&#64830;')
-
-    def get_absolute_url(self):
-        return 'quran_aya', [str(self.sura_id), str(self.number)]
 
     def __str__(self):
         return unicode_to_buckwalter(self.text)
@@ -92,9 +84,6 @@ class Root(models.Model):
     letters = models.CharField(max_length=10, unique=True, db_index=True)
     ayas = models.ManyToManyField(Aya, through='Word')
 
-    def get_absolute_url(self):
-        return 'quran_root', [str(self.id)]
-
     def __str__(self):
         return unicode_to_buckwalter(self.letters)
 
@@ -110,9 +99,6 @@ class Lemma(models.Model):
 
     class Meta:
         ordering = ['token']
-
-    def get_absolute_url(self):
-        return 'quran_lemma', [str(self.id)]
 
     def __str__(self):
         return unicode_to_buckwalter(self.token)
@@ -134,9 +120,6 @@ class Word(models.Model):
     class Meta:
         unique_together = ('aya', 'number')
         ordering = ['number']
-
-    def get_absolute_url(self):
-        return 'quran_word', [str(self.sura_id), str(self.aya.number), str(self.number)]
 
     def __str__(self):
         return unicode_to_buckwalter(self.token)
