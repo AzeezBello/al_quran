@@ -43,12 +43,8 @@ class Aya(models.Model):
         unique_together = ('number', 'sura')
         ordering = ['sura', 'number']
 
-
     def __str__(self):
-        return unicode_to_buckwalter(self.text)
-
-    def __unicode__(self):
-        return self.text
+        return str(self.number)
 
 
 class QuranTranslation(models.Model):
@@ -85,7 +81,7 @@ class Root(models.Model):
     ayas = models.ManyToManyField(Aya, through='Word')
 
     def __str__(self):
-        return unicode_to_buckwalter(self.letters)
+        return self.letters
 
     def __unicode__(self):
         return ' '.join(self.letters)
