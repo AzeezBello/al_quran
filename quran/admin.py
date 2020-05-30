@@ -18,7 +18,8 @@ class QuranTranslationAdmin(admin.ModelAdmin):
 
 
 class TranslatedAyaAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ['sura', 'aya', 'translation', 'text', ]
+    list_display = ['sura', 'aya', 'translation', 'text', ]
 
 
 class RootAdmin(admin.ModelAdmin):
