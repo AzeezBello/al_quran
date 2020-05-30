@@ -1,8 +1,4 @@
 from django.db import models
-from django.urls import reverse
-from django.utils.safestring import mark_safe
-
-from quran.buckwalter import *
 
 
 class Sura(models.Model):
@@ -37,7 +33,7 @@ class Aya(models.Model):
 
     number = models.IntegerField(verbose_name='Aya Number')
     sura = models.ForeignKey(Sura, on_delete=models.CASCADE, related_name='ayas', db_index=True)
-    text = models.TextField(blank=False)
+    arabic = models.TextField(blank=False)
 
     class Meta:
         unique_together = ('number', 'sura')
@@ -66,65 +62,16 @@ class TranslatedAya(models.Model):
     sura = models.ForeignKey(Sura, on_delete=models.CASCADE, related_name='translations', db_index=True)
     aya = models.ForeignKey(Aya, on_delete=models.CASCADE, related_name='translations', db_index=True)
     translation = models.ForeignKey(QuranTranslation, on_delete=models.CASCADE, db_index=True)
-    text = models.TextField(blank=False)
+    english = models.TextField(blank=False)
+    transliteration = models.TextField(blank=True)
 
     class Meta:
         unique_together = ('aya', 'translation')
         ordering = ['aya']
 
     def __unicode__(self):
-        return self.text
+        return self.english
 
     def __str__(self):
-        return self.text
+        return self.english
 
-
-class Root(models.Model):
-    """Root word"""
-
-    # to my knowledge, there is no root with more than 7 letters
-    letters = models.CharField(max_length=10, unique=True, db_index=True)
-    ayas = models.ManyToManyField(Aya, through='Word')
-
-    def __str__(self):
-        return self.letters
-
-    def __unicode__(self):
-        return ' '.join(self.letters)
-
-
-class Lemma(models.Model):
-    """Distinct Arabic word (lemma) in the Quran"""
-    token = models.CharField(max_length=50, unique=True, db_index=True)
-    root = models.ForeignKey(Root, on_delete=models.CASCADE, null=True, related_name='lemmas', db_index=True)
-    ayas = models.ManyToManyField(Aya, through='Word')
-
-    class Meta:
-        ordering = ['token']
-
-    def __str__(self):
-        return unicode_to_buckwalter(self.token)
-
-    def __unicode__(self):
-        return self.token
-
-
-class Word(models.Model):
-    """Arabic word in the Quran"""
-
-    sura = models.ForeignKey(Sura, on_delete=models.CASCADE, related_name='words', db_index=True)
-    aya = models.ForeignKey(Aya, on_delete=models.CASCADE, related_name='words', db_index=True)
-    number = models.IntegerField()
-    token = models.CharField(max_length=50, db_index=True)
-    root = models.ForeignKey(Root, on_delete=models.CASCADE, null=True, related_name='words', db_index=True)
-    lemma = models.ForeignKey(Lemma, on_delete=models.CASCADE, db_index=True)
-
-    class Meta:
-        unique_together = ('aya', 'number')
-        ordering = ['number']
-
-    def __str__(self):
-        return unicode_to_buckwalter(self.token)
-
-    def __unicode__(self):
-        return self.token

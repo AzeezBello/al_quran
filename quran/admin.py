@@ -9,8 +9,8 @@ class SuraAdmin(admin.ModelAdmin):
 
 
 class AyaAdmin(admin.ModelAdmin):
-    search_fields = ['sura', 'number', 'text', ]
-    list_display = ['sura', 'number', 'text', ]
+    search_fields = ['sura', 'number', 'arabic', ]
+    list_display = ['sura', 'number', 'arabic', ]
 
 
 class QuranTranslationAdmin(admin.ModelAdmin):
@@ -18,26 +18,11 @@ class QuranTranslationAdmin(admin.ModelAdmin):
 
 
 class TranslatedAyaAdmin(admin.ModelAdmin):
-    search_fields = ['sura', 'aya', 'translation', 'text', ]
-    list_display = ['sura', 'aya', 'translation', 'text', ]
-
-
-class RootAdmin(admin.ModelAdmin):
-    pass
-
-
-class LemmaAdmin(admin.ModelAdmin):
-    pass
-
-
-class WordAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ['sura', 'aya', 'translation', 'english', ]
+    list_display = ['sura', 'aya', 'translation', 'english', ]
 
 
 admin.site.register(Sura, SuraAdmin)
 admin.site.register(Aya, AyaAdmin)
 admin.site.register(QuranTranslation, QuranTranslationAdmin)
 admin.site.register(TranslatedAya, TranslatedAyaAdmin)
-admin.site.register(Root, RootAdmin)
-admin.site.register(Lemma, LemmaAdmin)
-admin.site.register(Word, WordAdmin)
