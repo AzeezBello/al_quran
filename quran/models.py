@@ -38,9 +38,12 @@ class Aya(models.Model):
     class Meta:
         unique_together = ('number', 'sura')
         ordering = ['sura', 'number']
+    #
+    # def __str__(self):
+    #     return str(self.number)
 
     def __str__(self):
-        return str(self.number)
+        return f'{self.sura} - {self.number}'
 
 
 class QuranTranslation(models.Model):
