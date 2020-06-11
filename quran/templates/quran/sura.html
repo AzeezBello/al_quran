@@ -4,19 +4,21 @@
 {% block content %}
 
 
-<div class="container mt-5 mb-5">
+<!--<div class="container mt-5 mb-5">-->
     <div class="row">
+        <div class="col-md-8 p-5">
         {% for aya,translation in ayas %}
-            <div class="col-md-12 pb-4">
-                {{ sura.number }}:{{ aya.number }}
-                <p class="float-right">{{ aya.arabic }}</p>
-                <p class="translation">{{ translation.english }}</p>
-                <hr>
-            </div>
+            {{ sura.number }}:{{ aya.number }}
+            <p class="float-right">{{ aya.arabic }}</p>
+            <p class="translation">{{ translation.english }}</p>
+            <hr class="pb-4">
         {% endfor %}
-
+        </div>
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>
-</div>
+<!-- </div>-->
+
+
 
 
 {% endblock %}
