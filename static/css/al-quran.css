@@ -4,6 +4,13 @@
  color: white;
 }
 
+.sidebar{
+    background-color: #EFF3F5;
+    color: #767778;
+    height: 100%;
+    right: 0px;
+}
+
 footer{
     background: #32312C;
     color: #FFFFFF;
@@ -17,9 +24,4 @@ footer .footer-copyright{
     border-radius: 0px;
 }
 
-.sidebar{
-    background-color: #F8F9FA;
-    color: #ffffff;
-    height: 100%;
-    right: 0px;
-}
+
