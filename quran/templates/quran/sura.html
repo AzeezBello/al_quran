@@ -8,7 +8,7 @@
         <div class="col-md-8 p-5">
             {% for aya,translation in ayas %}
                 {{ sura.number }}:{{ aya.number }}
-                <p class="float-right">{{ aya.arabic }}</p>
+                <p class="float-right text-right">{{ aya.arabic }}</p>
                 <p class="translation">{{ translation.english }}</p>
                 <hr class="pb-4">
             {% endfor %}
