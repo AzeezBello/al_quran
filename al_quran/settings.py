@@ -31,7 +31,7 @@ SECRET_KEY = 'vs_-=%3*f(f5mtsmu47+w9c$axeh4=zzh*1q0dqxa!($=s@e3_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['quranexplorers.com', 'www.quranexplorers.com', 'http://quranexplorers.com', 'https://quranexplorers.com']
 
 
 # Application definition
